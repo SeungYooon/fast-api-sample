@@ -46,3 +46,9 @@ FastAPI 기반의 블로그
 
 ```bash
 pip install -r requirements.txt
+
+### 🌍 배포 링크
+
+- 서비스 주소: [https://fast-api-sample-c2zy.onrender.com](https://fast-api-sample-c2zy.onrender.com)
+- Swagger 문서: [https://fast-api-sample-c2zy.onrender.com/docs](https://fast-api-sample-c2zy.onrender.com/docs)
+
