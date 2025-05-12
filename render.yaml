@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: madup-blog-api
+    env: docker
+    plan: free
+    region: oregon
+    branch: main
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /docs
+    autoDeploy: true
