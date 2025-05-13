@@ -10,7 +10,9 @@ from jose import JWTError, jwt
 from fastapi.security import OAuth2PasswordBearer
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="users/login")
-router = APIRouter(prefix="/comments", tags=["comments"])
+
+# ✅ prefix를 /posts로 변경
+router = APIRouter(prefix="/posts", tags=["comments"])
 
 def get_current_user(db: Session, token: str):
     try:
@@ -25,8 +27,14 @@ def get_current_user(db: Session, token: str):
     except JWTError:
         raise HTTPException(status_code=401, detail="Invalid token")
 
-@router.post("/{post_id}", response_model=CommentOut)
-def create_comment(post_id: int, comment: CommentCreate, db: Session = Depends(get_db), token: str = Depends(oauth2_scheme)):
+# ✅ 댓글 작성: /posts/{post_id}/comments
+@router.post("/{post_id}/comments", response_model=CommentOut)
+def create_comment(
+    post_id: int,
+    comment: CommentCreate,
+    db: Session = Depends(get_db),
+    token: str = Depends(oauth2_scheme)
+):
     user = get_current_user(db, token)
     post = db.query(Post).filter(Post.id == post_id).first()
     if not post:
@@ -37,11 +45,13 @@ def create_comment(post_id: int, comment: CommentCreate, db: Session = Depends(g
     db.refresh(new_comment)
     return new_comment
 
-@router.get("/{post_id}", response_model=list[CommentOut])
+# ✅ 댓글 조회: /posts/{post_id}/comments
+@router.get("/{post_id}/comments", response_model=list[CommentOut])
 def get_comments(post_id: int, db: Session = Depends(get_db)):
     return db.query(Comment).filter(Comment.post_id == post_id).all()
 
-@router.put("/{comment_id}", response_model=CommentOut)
+# ✅ 댓글 수정: /posts/comments/{comment_id}
+@router.put("/comments/{comment_id}", response_model=CommentOut)
 def update_comment(
     comment_id: int,
     comment: CommentCreate,
@@ -58,7 +68,8 @@ def update_comment(
     db.refresh(db_comment)
     return db_comment
 
-@router.delete("/{comment_id}")
+# ✅ 댓글 삭제: /posts/comments/{comment_id}
+@router.delete("/comments/{comment_id}")
 def delete_comment(
     comment_id: int,
     db: Session = Depends(get_db),
@@ -72,4 +83,3 @@ def delete_comment(
     db.delete(db_comment)
     db.commit()
     return {"message": "Comment deleted successfully"}
-
