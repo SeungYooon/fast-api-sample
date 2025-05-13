@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: madup-blog-api
+    name: fast-api-sample
     env: docker
     plan: free
     region: oregon
