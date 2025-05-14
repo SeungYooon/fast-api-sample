@@ -7,3 +7,4 @@ python-jose
 email-validator
 pydantic
 pytest 
+httpx
