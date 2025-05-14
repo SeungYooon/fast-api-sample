@@ -27,6 +27,7 @@ jobs:
 
     - name: Run tests
       run: |
+        echo "PYTHONPATH=$(pwd)" >> $GITHUB_ENV
         pytest
 
     - name: Deploy to Render
