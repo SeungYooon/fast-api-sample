@@ -15,6 +15,7 @@ FastAPI 기반의 블로그
 | DB           | SQLite                          |
 | Auth         | JWT (OAuth2PasswordBearer)      |
 | Docs         | Swagger (자동 생성)             |
+| CI/CD        | GitHub Actions + Render         |
 
 ---
 
@@ -49,6 +50,6 @@ pip install -r requirements.txt
 
 ### 🌍 배포 링크
 
-- 서비스 주소: [https://fast-api-sample-c2zy.onrender.com](https://fast-api-sample-c2zy.onrender.com)
-- Swagger 문서: [https://fast-api-sample-c2zy.onrender.com/docs](https://fast-api-sample-c2zy.onrender.com/docs)
+- 서비스 주소: [https://fast-api-sample-c2zy.onrender.com]
+- Swagger 문서: [https://fast-api-sample-c2zy.onrender.com/docs]
 
