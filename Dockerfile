@@ -15,3 +15,5 @@ RUN pip install --upgrade pip && pip install -r requirements.txt
 
 # start.sh는 그대로 app.main:app 기준 사용 가능
 CMD ["./start.sh"]
+
+RUN pip install python-dotenv
