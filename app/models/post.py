@@ -1,8 +1,10 @@
-
-from sqlalchemy import Column, Integer, String, ForeignKey, DateTime
 from datetime import datetime
+
+from sqlalchemy import Column, DateTime, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
+
 from app.models import Base
+
 
 class Post(Base):
     __tablename__ = "posts"

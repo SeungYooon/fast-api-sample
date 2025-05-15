@@ -1,7 +1,9 @@
 from pydantic import BaseModel
 
+
 class CommentCreate(BaseModel):
     content: str
+
 
 class CommentOut(CommentCreate):
     id: int

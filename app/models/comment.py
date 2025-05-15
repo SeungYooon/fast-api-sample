@@ -1,7 +1,10 @@
-from sqlalchemy import Column, Integer, String, ForeignKey, DateTime
 from datetime import datetime
-from app.models import Base
+
+from sqlalchemy import Column, DateTime, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
+
+from app.models import Base
+
 
 class Comment(Base):
     __tablename__ = "comments"
