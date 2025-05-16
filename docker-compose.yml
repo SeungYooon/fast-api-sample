@@ -3,25 +3,41 @@ version: '3.8'
 services:
   fastapi:
     build: .
+    container_name: fastapi
     command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
     ports:
       - "8000:8000"
+    volumes:
+      - .:/code
     environment:
       - CELERY_BROKER_URL=redis://redis:6379/0
       - CELERY_BACKEND_URL=redis://redis:6379/0
-    volumes:
-      - .:/code
     depends_on:
       - redis
       - celery
-
-  redis:
-    image: redis:7
+      - elasticsearch
 
   celery:
     build: .
-    command: celery -A app.tasks.celery_worker.celery_app worker --loglevel=info
+    container_name: celery
+    command: celery -A app.tasks.celery_worker:celery_app worker --loglevel=info
     volumes:
       - .:/code
+    environment:
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - CELERY_BACKEND_URL=redis://redis:6379/0
     depends_on:
       - redis
+
+  redis:
+    image: redis:7
+    container_name: redis
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.12.2
+    container_name: elasticsearch
+    ports:
+      - "9200:9200"
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false

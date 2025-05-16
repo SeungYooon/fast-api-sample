@@ -1,9 +1,14 @@
 from datetime import datetime
 
-from sqlalchemy import Column, DateTime, ForeignKey, Integer, String
+from sqlalchemy import Column
+from sqlalchemy import DateTime
+from sqlalchemy import ForeignKey
+from sqlalchemy import Integer
+from sqlalchemy import String
 from sqlalchemy.orm import relationship
 
-from app.models import Base  # ✅ 이게 정답
+from app.models import Base
+from app.models.user import User  # ✅ 추가
 
 
 class Notification(Base):
@@ -14,4 +19,4 @@ class Notification(Base):
     message = Column(String, nullable=False)
     created_at = Column(DateTime, default=datetime.utcnow)
 
-    user = relationship("User", back_populates="notifications")
+    user = relationship(User, back_populates="notifications")  # ✅ 문자열 대신 직접 참조

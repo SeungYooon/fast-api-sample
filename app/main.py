@@ -2,7 +2,10 @@ from fastapi import FastAPI
 from fastapi.openapi.utils import get_openapi
 
 from app.models import Base
-from app.routers import admin, comment, post, user
+from app.routers import admin
+from app.routers import comment
+from app.routers import post
+from app.routers import user
 from app.routers.user import engine
 
 app = FastAPI()

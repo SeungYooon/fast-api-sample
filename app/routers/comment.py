@@ -1,14 +1,19 @@
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter
+from fastapi import Depends
+from fastapi import HTTPException
 from fastapi.security import OAuth2PasswordBearer
-from jose import JWTError, jwt
+from jose import JWTError
+from jose import jwt
 from sqlalchemy.orm import Session
 
-from app.core.security import ALGORITHM, SECRET_KEY
+from app.core.security import ALGORITHM
+from app.core.security import SECRET_KEY
 from app.models.comment import Comment
 from app.models.post import Post
 from app.models.user import User
 from app.routers.user import get_db
-from app.schemas.comment import CommentCreate, CommentOut
+from app.schemas.comment import CommentCreate
+from app.schemas.comment import CommentOut
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="users/login")
 

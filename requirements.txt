@@ -10,3 +10,4 @@ pytest
 httpx
 celery
 redis
+elasticsearch==8.10.1

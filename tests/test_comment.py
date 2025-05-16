@@ -11,9 +11,7 @@ client = TestClient(app)
 
 
 def get_token():
-    client.post(
-        "/users/signup", json={"email": "c@example.com", "password": "1234"}
-    )
+    client.post("/users/signup", json={"email": "c@example.com", "password": "1234"})
     response = client.post(
         "/users/login",
         json={"email": "c@example.com", "password": "1234"},

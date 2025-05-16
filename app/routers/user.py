@@ -1,18 +1,21 @@
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter
+from fastapi import Depends
+from fastapi import HTTPException
 from fastapi.security import OAuth2PasswordBearer
-from jose import JWTError, jwt
+from jose import JWTError
+from jose import jwt
 from sqlalchemy import create_engine
-from sqlalchemy.orm import Session, sessionmaker
+from sqlalchemy.orm import Session
+from sqlalchemy.orm import sessionmaker
 
-from app.core.security import (
-    ALGORITHM,
-    SECRET_KEY,
-    create_access_token,
-    get_password_hash,
-    verify_password,
-)
+from app.core.security import ALGORITHM
+from app.core.security import SECRET_KEY
+from app.core.security import create_access_token
+from app.core.security import get_password_hash
+from app.core.security import verify_password
 from app.models.user import User
-from app.schemas.user import UserCreate, UserLogin
+from app.schemas.user import UserCreate
+from app.schemas.user import UserLogin
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="users/login")
 router = APIRouter(prefix="/users", tags=["users"])

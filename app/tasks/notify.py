@@ -1,3 +1,4 @@
+# app/tasks/notify.py
 from celery import shared_task
 from sqlalchemy.orm import Session
 
@@ -5,7 +6,7 @@ from app.db import SessionLocal
 from app.models.notification import Notification
 
 
-@shared_task
+@shared_task(name="app.tasks.notify.send_notification")  # 반드시 이름 명시
 def send_notification(user_id: int):
     db: Session = SessionLocal()
     try:
