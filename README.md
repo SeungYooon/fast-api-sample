@@ -16,6 +16,7 @@ FastAPI 기반의 블로그 백엔드 API
 | Auth         | JWT (OAuth2PasswordBearer)                |
 | Docs         | Swagger (자동 생성)                       |
 | Async Task   | Celery + Redis                            |
+| Search       | Elasticsearch 8                           |
 | CI/CD        | GitHub Actions + Render                   |
 | Test         | pytest + coverage                         |
 | Lint/Format  | pre-commit (black, isort, flake8)         |
@@ -33,6 +34,7 @@ FastAPI 기반의 블로그 백엔드 API
 - 게시글 작성 / 조회 / 수정 / 삭제
 - 키워드 검색 (`GET /posts/search?q=...`)
 - 페이징 조회 (`GET /posts/?skip=0&limit=10`)
+- 게시글 작성 시 Elasticsearch 색인 등록 (index: `posts`)
 
 ### 💬 댓글
 - 댓글 작성 / 조회 / 수정 / 삭제
