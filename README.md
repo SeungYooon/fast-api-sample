@@ -49,6 +49,13 @@ FastAPI 기반의 블로그 백엔드 API
 
 ---
 
+## 🔗 API 문서 (Swagger UI)
+
+- **Swagger UI**: [https://fast-api-sample-c2zy.onrender.com/docs](https://fast-api-sample-c2zy.onrender.com/docs)
+- JWT 인증이 필요한 요청은 우측 상단 `Authorize` 버튼 클릭 후 `Bearer {토큰}` 입력
+
+---
+
 ## 🚀 실행 방법
 
 ### 1. 패키지 설치
