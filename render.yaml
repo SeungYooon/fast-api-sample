@@ -1,7 +1,7 @@
 services:
   - type: web
     name: fast-api-sample
-    env: docker
+    runtime: docker  # ✅ 'env' → 'runtime'으로 수정
     plan: free
     region: oregon
     branch: main
